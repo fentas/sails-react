@@ -1,0 +1,39 @@
+{
+  "name": "sails-react",
+  "author": {
+    "name": "Jan Guth",
+    "email": "git@pan.st"
+  },
+  "version": "0.0.1",
+  "description": "Integration of fb react into sails jst workflow.",
+  "homepage": "http://pan.st/open-source",
+  "keywords": [
+    "sails",
+    "sailsjs",
+    "sails.js",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pan-st/sails-react.git"
+  },
+  "license":"MIT",
+  "bugs": {
+    "url": "http://github.com/pan-st/sails-react/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "grunt": "0.4.2",
+    "grunt-react": "~0.7.0",
+    "grunt-browserify ": "~2.0.1",
+    "uglify-js": "~2.4.13"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "0.1.1",
+    "grunt-contrib-clean": "0.4.0",
+    "grunt-contrib-nodeunit": "0.1.2"
+  }
+}
