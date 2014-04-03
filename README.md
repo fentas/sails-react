@@ -1,34 +1,122 @@
 # sails-react
-An easy way to include all *.jsx file within the asset/template folder.
-This is a try to make it as easy as possible to work with fb react within sails jst workflow.
+An easy way to work with fb react within sailsjs.
 
 ## Current State
+Version: `0.0.1`
 This package is still under construction and isn't available within the npm packages.
 Everything you see bellow is a draft as it should be in future!
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
+This plugin requires:
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+```json
+"grunt": "0.4.2",
+"grunt-react": "~0.7.0",
+"grunt-browserify ": "~2.0.1",
+"uglify-js": "~2.4.13"
+```
+
+You may install this plugin with this command:
 
 ```shell
 npm install sails-react --save-dev
 ```
 
-Or register the plugin within the root package.json file in your sails project.
+Or register the plugin within the root package.json file in your sails project. `"sails-react": "~0.0.1"`
 After this update the npm packages with:
 
 ```shell
 npm install
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+## Usage
+There are two ways to use this Plugin. 
+
+### As template parser
+To activate sails-react as a template parser you have to insert following code into `config/express.js`:
 
 ```js
-grunt.loadNpmTasks('sails-react');
+customMiddleware: function (app) {
+  app.use(require('../node_modules/sails-react').middleware(app));
+},
 ```
 
-*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.1](https://github.com/gruntjs/grunt-contrib-jst/tree/grunt-0.3-stable).*
+That should be enough to get started. 
+As usual there are several configurations.
+Following options are available:
 
-## Next Step
-Futher information will follow. For sure.
+```js
+{
+  // relative path to react templates
+  templates: "/assets/templates",
+  
+  temporary: {
+    // temp folder.
+    // null for auto detect.
+    folder: null,
+    // prefix for temp files.
+    prefix: 'sails-react_',
+    // remove not used temp files.
+    cleanup: true
+  },
+  
+  render: {
+    // following options/replacements are available:
+    // $<path>  : html tag name (<$<path> />) or specfic value (<... sails-react="$<path>" />)
+    // $<lang>  : used language from client (e.g. en|de|fr|ru|sp...)
+    // examples : '$<path>.jsx', '$<path>_$<lang>.jsx'
+    filePattern: '$<path>.jsx',
+    // file pattern will be forced to lower case
+    lowerCaseFilenames: true,
+    // is value is string or true given tag will be used as top level element for react node
+    // if string given tag will be replaced by this value. 
+    // to keep given tag use true.
+    // false will do nothing to given tag.
+    autoUseTag: 'div',
+    // if autoUseTag is true following query selector will be used to find given tag.
+    // for example $ would be possible in most cases. (jQuery etc.)
+    querySelector: "document.querySelector",
+    
+    // first step: use your view engine. (e.g. JST)
+    processView: true,
+    // second step: compile jsx to standard javascript
+    processJsx: true
+  },
+  
+  linker: {
+    // third step: minify results
+    minify: true,
+    // insert script after (true), before (false) or replace (null) lookfor pattern
+    after: false,
+    // where to insert script
+    lookfor: '</body>',
+    // type of script. (e.g. text/jsx)
+    scriptType: 'text/javascript',
+  }
+}
+```
+
+### Only grunt
+If you think processing the react files every request is an overhead you can compile them once (usually on sails lift) an deliver them as static javascript files.
+To do so you have to register sails-react grunt in `tasks/register/compileAssets`. Simply add `"sailsreact"`.
+
+After this you have to create a configuration in `tasks/config/sailsreact.js` like this:
+
+```js
+//...
+```
+
+Now if you lift sails all the static javascript files will be created as configured.
+
+## Donation
+Please help me to finance my every cup of tea. Every coin is appreciated.
+
+```shell
+Sick of tea? That’s like being sick of *breathing*! - Uncle Iroh
+```
+
+Bitcoin address: `197EypPopXtDPFK6rEbCw6XDEaxjTKP58S`
+
+PayPal: `jan.guth@gmail.com`
+
+Or just `flattr` this repo.
