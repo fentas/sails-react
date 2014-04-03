@@ -3,13 +3,14 @@ An easy way to work with fb react within sailsjs.
 
 ## Current State
 Version: `0.0.1`
-This package is still under construction and isn't available within the npm packages.
-Everything you see bellow is a draft as it should be in future!
+
+This package is mainly under construction.
+Everything you see bellow can be changed in near future!
 
 ## Getting Started
 This plugin requires:
 
-```json
+```
 "grunt": "0.4.2",
 "grunt-react": "~0.7.0",
 "grunt-browserify ": "~2.0.1",
@@ -111,7 +112,7 @@ Now if you lift sails all the static javascript files will be created as configu
 ## Donation
 Please help me to finance my every cup of tea. Every coin is appreciated.
 
-```shell
+```json
 Sick of tea? That’s like being sick of *breathing*! - Uncle Iroh
 ```
 
