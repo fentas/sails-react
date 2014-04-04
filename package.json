@@ -4,9 +4,8 @@
     "name": "Jan Guth",
     "email": "git@pan.st"
   },
-  "version": "0.0.1",
-  "description": "Integration of fb react into sails jst workflow.",
-  "homepage": "http://pan.st/open-source",
+  "version": "0.0.2",
+  "description": "Integration of fb react into sailsjs.",
   "keywords": [
     "sails",
     "sailsjs",
