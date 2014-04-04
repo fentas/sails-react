@@ -4,9 +4,14 @@ And also to integrate it into Sails workflow.
 
 With the default configuration it will parse your generated view for any html tag containing `sails-react`.
 If so, the given tag (e.g. `<TodoApp sails-react />`) will be used to match a specific tag within your template folder (here `assets/templates/todoapp.jsx`).
+Also this html file will be used as top level node for its file match. To do so automatically a line will attached to make this possible.
+This give you the means for example to use a dynemic data tag within the react html tag without any further programming.
 This file will be processed through the configured view engine (to make use of the integrated i18n for example).
 Then it will be compiled from jsx to standard javascript.
+This will be done with Browserify (http://browserify.org/) meaning that you can use require. Ceep it clean.
 And at last it will be minified before it will be released.
+
+Note: your files will be not altered through that.
 
 Of cource the result can be (will be in default) cached to contain the overhead of this whole procedure.
 But if you are developing on the jsx file disable cache. It saves time not to be forced to restart sails.
