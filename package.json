@@ -27,7 +27,7 @@
   "dependencies": {
     "grunt": "0.4.2",
     "grunt-react": "~0.7.0",
-    "grunt-browserify ": "~2.0.1",
+    "grunt-browserify": "~2.0.1",
     "uglify-js": "~2.4.13"
   },
   "devDependencies": {
